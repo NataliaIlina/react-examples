@@ -1,10 +1,14 @@
 import React from 'react';
-import { StyledAppWrapper } from 'src/App.styled';
+import { StyledAppWrapper, StyledButtons } from 'src/App.styled';
+import Button from 'src/ui/Button';
 
 function App() {
   return (
     <StyledAppWrapper>
-      <div>App</div>
+      <StyledButtons>
+        <Button>Стандартная кнопка</Button>
+        <Button variant="outlined">Кнопка с рамкой</Button>
+      </StyledButtons>
     </StyledAppWrapper>
   );
 }

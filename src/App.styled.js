@@ -6,6 +6,9 @@ export const StyledAppWrapper = styled.div`
   padding: 24px;
   margin: 0 auto;
   min-height: 100vh;
+`;
+
+export const StyledButtons = styled.div`
   display: flex;
-  flex-direction: column;
+  gap: 16px;
 `;
