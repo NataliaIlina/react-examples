@@ -16,17 +16,15 @@ const UserTable = () => {
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => {
-            return (
-              <tr key={user.id}>
-                <StyledCell>{user.firstName}</StyledCell>
-                <StyledCell>{user.lastName}</StyledCell>
-                <StyledCell>{STATUS_TITLE[user.status]}</StyledCell>
-                <StyledCell>{user.mail}</StyledCell>
-                <StyledCell>{user.registrationDate}</StyledCell>
-              </tr>
-            );
-          })}
+          {users.map((user) => (
+            <tr key={user.id}>
+              <StyledCell>{user.firstName}</StyledCell>
+              <StyledCell>{user.lastName}</StyledCell>
+              <StyledCell>{STATUS_TITLE[user.status]}</StyledCell>
+              <StyledCell>{user.mail}</StyledCell>
+              <StyledCell>{user.registrationDate}</StyledCell>
+            </tr>
+          ))}
         </tbody>
       </StyledTable>
     </StyledTableWrapper>
