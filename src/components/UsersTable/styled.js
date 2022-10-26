@@ -30,3 +30,8 @@ export const StyledCell = styled.td`
   border-bottom: 1px solid #e7ebf0;
   text-align: left;
 `;
+
+export const StyledEmptyResult = styled.div`
+  padding: 24px;
+  text-align: center;
+`;
