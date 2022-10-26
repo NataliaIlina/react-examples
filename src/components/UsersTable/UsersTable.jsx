@@ -11,6 +11,7 @@ import { STATUS_TITLE } from 'src/constants';
 import { FILTERS, TABLE_COLUMNS } from 'components/UsersTable/constants';
 import TextField from 'src/ui/TextField/TextField';
 import Filters from 'ui/Filters/Filters';
+import CreateUserForm from 'components/CreateUserForm/CreateUserForm';
 
 const UserTable = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -73,6 +74,8 @@ const UserTable = () => {
           </StyledTable>
         )}
       </StyledTableWrapper>
+
+      <CreateUserForm />
     </>
   );
 };

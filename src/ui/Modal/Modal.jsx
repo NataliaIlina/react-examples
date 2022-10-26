@@ -11,14 +11,6 @@ import {
 import Button from 'src/ui/Button/Button';
 
 const Modal = ({ isOpen, onClose, title, children, acceptButtonTitle = 'Сохранить', onAccept }) => {
-  const onAcceptButtonClick = () => {
-    if (onAccept) {
-      onAccept();
-    }
-
-    onClose();
-  };
-
   if (!isOpen) {
     return null;
   }
@@ -37,7 +29,7 @@ const Modal = ({ isOpen, onClose, title, children, acceptButtonTitle = 'Сохр
           <Button variant="outlined" onClick={onClose}>
             Отменить
           </Button>
-          <Button onClick={onAcceptButtonClick}>{acceptButtonTitle}</Button>
+          <Button onClick={onAccept}>{acceptButtonTitle}</Button>
         </StyledModalActions>
       </StyledModal>
     </>
