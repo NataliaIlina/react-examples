@@ -10,10 +10,11 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-weight: 400;
-    font-style: normal;
     font-size: 16px;
     line-height: 1.2;
     box-sizing: border-box;
+    background-color: #e7ebf0;
+    color: rgba(0, 0, 0, 0.87);
   };
 
   *,
