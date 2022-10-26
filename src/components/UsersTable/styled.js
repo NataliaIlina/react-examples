@@ -7,6 +7,7 @@ export const StyledTableWrapper = styled.div`
     0px 1px 3px 0px rgb(0 0 0 / 12%);
   width: 100%;
   overflow-x: auto;
+  margin-bottom: 16px;
 `;
 
 export const StyledTable = styled.table`
