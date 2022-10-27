@@ -4,7 +4,7 @@ export const users = [
     firstName: 'Иван',
     lastName: 'Иванов',
     status: 'active',
-    mail: 'ivanov@project.org',
+    email: 'ivanov@project.org',
     registrationDate: '2022.10.10',
   },
   {
@@ -12,7 +12,7 @@ export const users = [
     firstName: 'Петр',
     lastName: 'Петров',
     status: 'active',
-    mail: 'petrov@project.org',
+    email: 'petrov@project.org',
     registrationDate: '2022.10.10',
   },
   {
@@ -20,7 +20,7 @@ export const users = [
     firstName: 'Сидор',
     lastName: 'Сидоров',
     status: 'blocked',
-    mail: 'sidorov@project.org',
+    email: 'sidorov@project.org',
     registrationDate: '2022.10.10',
   },
   {
@@ -28,7 +28,7 @@ export const users = [
     firstName: 'Матвей',
     lastName: 'Матвеев',
     status: 'active',
-    mail: 'matveev@project.org',
+    email: 'matveev@project.org',
     registrationDate: '2022.10.10',
   },
   {
@@ -36,7 +36,7 @@ export const users = [
     firstName: 'Игнат',
     lastName: 'Игнатов',
     status: 'frozen',
-    mail: 'ignatov@project.org',
+    email: 'ignatov@project.org',
     registrationDate: '2022.10.10',
   },
 ];

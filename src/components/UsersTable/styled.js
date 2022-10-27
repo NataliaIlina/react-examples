@@ -36,3 +36,12 @@ export const StyledEmptyResult = styled.div`
   padding: 24px;
   text-align: center;
 `;
+
+export const StyledIcon = styled.div`
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

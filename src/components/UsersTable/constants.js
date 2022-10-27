@@ -1,6 +1,6 @@
 import { STATUS_TITLE } from 'src/constants';
 
-export const TABLE_COLUMNS = ['Имя', 'Фамилия', 'Статус', 'Почта', 'Дата регистрации'];
+export const TABLE_COLUMNS = ['Имя', 'Фамилия', 'Статус', 'Почта', 'Дата регистрации', ''];
 
 export const FILTERS = [
   {
