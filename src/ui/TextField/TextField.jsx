@@ -1,12 +1,15 @@
 import React from 'react';
-import { StyledTextField, StyledTextFieldWrapper } from './styled';
+import MuiTextField from '@mui/material/TextField';
 
-const TextField = ({ label = '', value, onChange, id }) => {
+const TextField = ({
+  variant = 'outlined',
+  size = 'small',
+  margin = 'normal',
+  fullWidth = true,
+  ...props
+}) => {
   return (
-    <StyledTextFieldWrapper>
-      <label htmlFor={id}>{label}</label>
-      <StyledTextField id={id} value={value} onChange={onChange} />
-    </StyledTextFieldWrapper>
+    <MuiTextField fullWidth={fullWidth} variant={variant} size={size} margin={margin} {...props} />
   );
 };
 

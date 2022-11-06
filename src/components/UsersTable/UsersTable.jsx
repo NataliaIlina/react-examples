@@ -64,6 +64,7 @@ const UserTable = () => {
         onChange={(e) => setSearchValue(e.target.value)}
         id="search"
         label="Поиск по имени"
+        fullWidth={false}
       />
 
       <Filters value={currentStatus} onChange={onFilterChange} options={FILTERS} />
