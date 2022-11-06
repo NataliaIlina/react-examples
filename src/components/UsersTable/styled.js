@@ -10,33 +10,6 @@ export const StyledTableWrapper = styled.div`
   margin-bottom: 16px;
 `;
 
-export const StyledTable = styled.table`
-  display: table;
-  width: 100%;
-  border-collapse: collapse;
-  border-spacing: 0;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-export const StyledHeadCell = styled.th`
-  padding: 16px;
-  border-bottom: 1px solid #e7ebf0;
-  text-align: left;
-  font-weight: 600;
-`;
-
-export const StyledCell = styled.td`
-  padding: 16px;
-  border-bottom: 1px solid #e7ebf0;
-  text-align: left;
-`;
-
-export const StyledEmptyResult = styled.div`
-  padding: 24px;
-  text-align: center;
-`;
-
 export const StyledIcon = styled.div`
   width: 32px;
   height: 32px;

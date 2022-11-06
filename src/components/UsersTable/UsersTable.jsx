@@ -1,12 +1,5 @@
 import React, { useState } from 'react';
-import {
-  StyledTableWrapper,
-  StyledCell,
-  StyledHeadCell,
-  StyledTable,
-  StyledEmptyResult,
-  StyledIcon,
-} from './styled';
+import { StyledTableWrapper, StyledIcon } from './styled';
 import { users } from './mock';
 import { STATUS_TITLE } from 'src/constants';
 import { FILTERS, TABLE_COLUMNS } from 'components/UsersTable/constants';
@@ -15,6 +8,7 @@ import Filters from 'ui/Filters/Filters';
 import CreateUserForm from 'components/CreateUserForm/CreateUserForm';
 import EditIcon from 'ui/icons/Edit';
 import EditUserForm from 'components/EditUserForm/EditUserForm';
+import Table from 'ui/Table/Table';
 
 const UserTable = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -57,6 +51,25 @@ const UserTable = () => {
       return user.status === currentStatus;
     });
 
+  const rows = data.map((user) => [
+    { content: user.firstName },
+    { content: user.lastName },
+    { content: STATUS_TITLE[user.status] },
+    { content: user.email },
+    { content: user.registrationDate },
+    {
+      content: (
+        <StyledIcon
+          onClick={() => {
+            openEditModal(user);
+          }}
+        >
+          <EditIcon />
+        </StyledIcon>
+      ),
+    },
+  ]);
+
   return (
     <>
       <TextField
@@ -70,38 +83,7 @@ const UserTable = () => {
       <Filters value={currentStatus} onChange={onFilterChange} options={FILTERS} />
 
       <StyledTableWrapper>
-        {data.length === 0 && <StyledEmptyResult>нет данных для отображения</StyledEmptyResult>}
-        {data.length > 0 && (
-          <StyledTable>
-            <thead>
-              <tr>
-                {TABLE_COLUMNS.map((column) => (
-                  <StyledHeadCell key={column}>{column}</StyledHeadCell>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {data.map((user) => (
-                <tr key={user.id}>
-                  <StyledCell>{user.firstName}</StyledCell>
-                  <StyledCell>{user.lastName}</StyledCell>
-                  <StyledCell>{STATUS_TITLE[user.status]}</StyledCell>
-                  <StyledCell>{user.email}</StyledCell>
-                  <StyledCell>{user.registrationDate}</StyledCell>
-                  <StyledCell>
-                    <StyledIcon
-                      onClick={() => {
-                        openEditModal(user);
-                      }}
-                    >
-                      <EditIcon />
-                    </StyledIcon>
-                  </StyledCell>
-                </tr>
-              ))}
-            </tbody>
-          </StyledTable>
-        )}
+        <Table rows={rows} columns={TABLE_COLUMNS} />
       </StyledTableWrapper>
 
       <CreateUserForm />
