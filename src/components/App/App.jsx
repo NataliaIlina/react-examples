@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledAppWrapper } from 'src/App.styled';
+import { StyledAppWrapper } from 'components/App/App.styled';
 import UsersTable from 'components/UsersTable/UsersTable';
 
 function App() {

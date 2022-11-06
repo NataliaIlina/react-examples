@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const StyledFilters = styled.div`
   margin-bottom: 16px;
