@@ -1,9 +1,5 @@
 import styled from '@emotion/styled';
 
-export const StyledFilters = styled.div`
-  margin-bottom: 16px;
-`;
-
 export const StyledFilterButton = styled.button`
   min-width: 60px;
   padding: 12px 20px;

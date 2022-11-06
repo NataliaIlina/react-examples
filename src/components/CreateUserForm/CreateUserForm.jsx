@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from 'ui/Button/Button';
 import Modal from 'ui/Modal/Modal';
 import TextField from 'ui/TextField/TextField';
-import { StyledButtonWrapper } from 'components/CreateUserForm/styled';
+import Flex from 'ui/Flex/Flex';
 
 const CreateUserForm = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -24,7 +24,7 @@ const CreateUserForm = () => {
   };
 
   return (
-    <StyledButtonWrapper>
+    <Flex justifyContent="center">
       <Button onClick={openModal}>Добавить пользователя</Button>
       <Modal
         isOpen={isModalOpen}
@@ -57,7 +57,7 @@ const CreateUserForm = () => {
           }}
         />
       </Modal>
-    </StyledButtonWrapper>
+    </Flex>
   );
 };
 
