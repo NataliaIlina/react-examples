@@ -1,9 +1,10 @@
-import { StyledFilterButton, StyledFilters } from 'src/ui/Filters/styled';
+import { StyledFilterButton } from 'src/ui/Filters/styled';
 import React from 'react';
+import Box from 'ui/Box/Box';
 
 const Filters = ({ value, onChange, options }) => {
   return (
-    <StyledFilters>
+    <Box mb="16px">
       {options.map((item) => (
         <StyledFilterButton
           key={item.label}
@@ -13,7 +14,7 @@ const Filters = ({ value, onChange, options }) => {
           {item.label}
         </StyledFilterButton>
       ))}
-    </StyledFilters>
+    </Box>
   );
 };
 
