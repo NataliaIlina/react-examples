@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyledButton } from 'src/ui/Button/styled';
+import MuiButton from '@mui/material/Button';
 
-const Button = ({ children, onClick, variant = 'contained' }) => (
-  <StyledButton variant={variant} onClick={onClick}>
+const Button = ({ children, variant = 'contained', ...props }) => (
+  <MuiButton variant={variant} {...props}>
     {children}
-  </StyledButton>
+  </MuiButton>
 );
 
 export default Button;
