@@ -1,38 +1,23 @@
 import React from 'react';
-import {
-  StyledModal,
-  StyledModalContent,
-  StyledModalTitle,
-  StyledBackdrop,
-  StyledModalActions,
-  StyledModalHeader,
-  StyledCloseIcon,
-} from 'src/ui/Modal/styled';
 import Button from 'src/ui/Button/Button';
+import MuiDialog from '@mui/material/Dialog';
+import MuiDialogActions from '@mui/material/DialogActions';
+import MuiDialogContent from '@mui/material/DialogContent';
+import MuiDialogTitle from '@mui/material/DialogTitle';
 
 const Modal = ({ isOpen, onClose, title, children, acceptButtonTitle = 'Сохранить', onAccept }) => {
-  if (!isOpen) {
-    return null;
-  }
-
   return (
-    <>
-      <StyledBackdrop onClick={onClose} />
-      <StyledModal onClick={(e) => e.stopPropagation()}>
-        <StyledModalHeader>
-          <StyledModalTitle>{title}</StyledModalTitle>
-          <StyledCloseIcon onClick={onClose}>х</StyledCloseIcon>
-        </StyledModalHeader>
+    <MuiDialog open={isOpen} onClose={onClose}>
+      <MuiDialogTitle>{title}</MuiDialogTitle>
 
-        <StyledModalContent>{children}</StyledModalContent>
-        <StyledModalActions>
-          <Button variant="outlined" onClick={onClose}>
-            Отменить
-          </Button>
-          <Button onClick={onAccept}>{acceptButtonTitle}</Button>
-        </StyledModalActions>
-      </StyledModal>
-    </>
+      <MuiDialogContent>{children}</MuiDialogContent>
+      <MuiDialogActions>
+        <Button variant="outlined" onClick={onClose}>
+          Отменить
+        </Button>
+        <Button onClick={onAccept}>{acceptButtonTitle}</Button>
+      </MuiDialogActions>
+    </MuiDialog>
   );
 };
 
