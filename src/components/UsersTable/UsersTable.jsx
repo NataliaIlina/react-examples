@@ -80,7 +80,12 @@ const UserTable = () => {
         fullWidth={false}
       />
 
-      <Filters value={currentStatus} onChange={onFilterChange} options={FILTERS} />
+      <Filters
+        value={currentStatus}
+        onChange={onFilterChange}
+        options={FILTERS}
+        sx={{ mb: '16px' }}
+      />
 
       <StyledTableWrapper>
         <Table rows={rows} columns={TABLE_COLUMNS} />
