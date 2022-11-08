@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Modal from 'ui/Modal/Modal';
 import UserFormFields from 'components/UserFormFields/UserFormFields';
 
-const EditUserForm = ({ initialValues, isModalOpen, closeModal }) => {
+const EditUserModal = ({ initialValues, isModalOpen, closeModal }) => {
   const [values, setValues] = useState(initialValues);
 
   const onFormSubmit = () => {
@@ -21,4 +21,4 @@ const EditUserForm = ({ initialValues, isModalOpen, closeModal }) => {
   );
 };
 
-export default EditUserForm;
+export default EditUserModal;

@@ -1,20 +1,27 @@
 import React, { useState } from 'react';
-import { StyledTableWrapper, StyledIcon } from './styled';
+import { StyledTableWrapper } from './styled';
 import { users } from './mock';
 import { STATUS_TITLE } from 'src/constants/common';
 import { FILTERS, TABLE_COLUMNS } from 'components/UsersTable/constants';
 import TextField from 'src/ui/TextField/TextField';
 import Filters from 'ui/Filters/Filters';
-import CreateUserForm from 'components/CreateUserForm/CreateUserForm';
-import EditIcon from 'ui/icons/Edit';
-import EditUserForm from 'components/EditUserForm/EditUserForm';
+import CreateUserModal from 'components/CreateUserModal/CreateUserModal';
+import EditUserModal from 'components/EditUserModal/EditUserModal';
 import Table from 'ui/Table/Table';
+import IconButton from 'ui/IconButton/IconButton';
+import DeleteUserModal from 'components/DeleteUserModal/DeleteUserModal';
+import Flex from 'ui/Flex/Flex';
+import Button from 'ui/Button/Button';
 
 const UserTable = () => {
   const [searchValue, setSearchValue] = useState('');
   const [currentStatus, setCurrentStatus] = useState('all');
   const [currentUser, setCurrentUser] = useState(null);
-  const [isEditModalOpen, setEditModalOpen] = useState(false);
+  const [currentModal, setCurrentModal] = useState(null);
+
+  const openCreateModal = () => {
+    setCurrentModal('create');
+  };
 
   const openEditModal = (user) => {
     setCurrentUser({
@@ -22,12 +29,17 @@ const UserTable = () => {
       lastName: user.lastName,
       email: user.email,
     });
-    setEditModalOpen(true);
+    setCurrentModal('edit');
   };
 
-  const closeEditModal = () => {
+  const openDeleteModal = (user) => {
+    setCurrentUser(user);
+    setCurrentModal('delete');
+  };
+
+  const closeModal = () => {
     setCurrentUser(null);
-    setEditModalOpen(false);
+    setCurrentModal(null);
   };
 
   const onFilterChange = (status) => {
@@ -59,13 +71,22 @@ const UserTable = () => {
     { content: user.registrationDate },
     {
       content: (
-        <StyledIcon
+        <IconButton
           onClick={() => {
             openEditModal(user);
           }}
-        >
-          <EditIcon />
-        </StyledIcon>
+          name="edit"
+        />
+      ),
+    },
+    {
+      content: (
+        <IconButton
+          onClick={() => {
+            openDeleteModal(user);
+          }}
+          name="delete"
+        />
       ),
     },
   ]);
@@ -91,12 +112,25 @@ const UserTable = () => {
         <Table rows={rows} columns={TABLE_COLUMNS} />
       </StyledTableWrapper>
 
-      <CreateUserForm />
+      <Flex justifyContent="center">
+        <Button onClick={openCreateModal}>Добавить пользователя</Button>
+      </Flex>
+
+      <CreateUserModal closeModal={closeModal} isModalOpen={currentModal === 'create'} />
+
       {currentUser && (
-        <EditUserForm
+        <EditUserModal
           initialValues={currentUser}
-          closeModal={closeEditModal}
-          isModalOpen={isEditModalOpen}
+          closeModal={closeModal}
+          isModalOpen={currentModal === 'edit'}
+        />
+      )}
+
+      {currentUser && (
+        <DeleteUserModal
+          user={currentUser}
+          closeModal={closeModal}
+          isModalOpen={currentModal === 'delete'}
         />
       )}
     </>
