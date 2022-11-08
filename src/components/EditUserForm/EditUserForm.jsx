@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'ui/Modal/Modal';
-import TextField from 'ui/TextField/TextField';
+import UserFormFields from 'components/UserFormFields/UserFormFields';
 
 const EditUserForm = ({ initialValues, isModalOpen, closeModal }) => {
   const [values, setValues] = useState(initialValues);
@@ -16,30 +16,7 @@ const EditUserForm = ({ initialValues, isModalOpen, closeModal }) => {
       title="Добавление пользователя"
       onAccept={onFormSubmit}
     >
-      <TextField
-        label="Имя"
-        id="firstName"
-        value={values.firstName}
-        onChange={(e) => {
-          setValues({ ...values, firstName: e.target.value });
-        }}
-      />
-      <TextField
-        label="Фамилия"
-        id="lastName"
-        value={values.lastName}
-        onChange={(e) => {
-          setValues({ ...values, lastName: e.target.value });
-        }}
-      />
-      <TextField
-        label="E-mail"
-        id="email"
-        value={values.email}
-        onChange={(e) => {
-          setValues({ ...values, email: e.target.value });
-        }}
-      />
+      <UserFormFields setValues={setValues} values={values} />
     </Modal>
   );
 };

@@ -1,4 +1,4 @@
-import { STATUS_TITLE } from 'src/constants';
+import { STATUS_TITLE } from 'src/constants/common';
 
 export const TABLE_COLUMNS = ['Имя', 'Фамилия', 'Статус', 'Почта', 'Дата регистрации', ''];
 

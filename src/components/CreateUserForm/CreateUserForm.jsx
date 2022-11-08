@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Button from 'ui/Button/Button';
 import Modal from 'ui/Modal/Modal';
-import TextField from 'ui/TextField/TextField';
 import Flex from 'ui/Flex/Flex';
+import UserFormFields from 'components/UserFormFields/UserFormFields';
 
 const CreateUserForm = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -32,30 +32,7 @@ const CreateUserForm = () => {
         title="Добавление пользователя"
         onAccept={onFormSubmit}
       >
-        <TextField
-          label="Имя"
-          id="firstName"
-          value={values.firstName}
-          onChange={(e) => {
-            setValues({ ...values, firstName: e.target.value });
-          }}
-        />
-        <TextField
-          label="Фамилия"
-          id="lastName"
-          value={values.lastName}
-          onChange={(e) => {
-            setValues({ ...values, lastName: e.target.value });
-          }}
-        />
-        <TextField
-          label="E-mail"
-          id="email"
-          value={values.email}
-          onChange={(e) => {
-            setValues({ ...values, email: e.target.value });
-          }}
-        />
+        <UserFormFields setValues={setValues} values={values} />
       </Modal>
     </Flex>
   );
