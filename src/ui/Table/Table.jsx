@@ -19,8 +19,8 @@ const Table = ({ rows, columns }) => {
         <MuiTable>
           <MuiTableHead>
             <MuiTableRow>
-              {columns.map((column) => (
-                <MuiTableCell key={column}>{column}</MuiTableCell>
+              {columns.map((column, index) => (
+                <MuiTableCell key={index}>{column}</MuiTableCell>
               ))}
             </MuiTableRow>
           </MuiTableHead>

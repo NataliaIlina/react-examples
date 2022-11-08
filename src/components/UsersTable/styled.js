@@ -9,12 +9,3 @@ export const StyledTableWrapper = styled.div`
   overflow-x: auto;
   margin-bottom: 16px;
 `;
-
-export const StyledIcon = styled.div`
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
