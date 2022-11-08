@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyledTableWrapper, StyledIcon } from './styled';
 import { users } from './mock';
-import { STATUS_TITLE } from 'src/constants';
+import { STATUS_TITLE } from 'src/constants/common';
 import { FILTERS, TABLE_COLUMNS } from 'components/UsersTable/constants';
 import TextField from 'src/ui/TextField/TextField';
 import Filters from 'ui/Filters/Filters';
