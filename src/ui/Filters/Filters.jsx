@@ -1,20 +1,14 @@
-import { StyledFilterButton } from 'src/ui/Filters/styled';
 import React from 'react';
-import Box from 'ui/Box/Box';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 
-const Filters = ({ value, onChange, options }) => {
+const Filters = ({ value, onChange, options, ...props }) => {
   return (
-    <Box mb="16px">
+    <Tabs value={value} onChange={(e, newValue) => onChange(newValue)} {...props}>
       {options.map((item) => (
-        <StyledFilterButton
-          key={item.label}
-          isActive={value === item.value}
-          onClick={() => onChange(item.value)}
-        >
-          {item.label}
-        </StyledFilterButton>
+        <Tab key={item.label} label={item.label} value={item.value} />
       ))}
-    </Box>
+    </Tabs>
   );
 };
 
