@@ -1,12 +1,16 @@
 import React from 'react';
-import { StyledAppWrapper } from 'components/App/App.styled';
+import { StyledContentWrapper } from 'components/App/App.styled';
 import UsersTable from 'components/UsersTable/UsersTable';
+import Header from 'components/Header/Header';
 
 function App() {
   return (
-    <StyledAppWrapper>
-      <UsersTable />
-    </StyledAppWrapper>
+    <>
+      <Header />
+      <StyledContentWrapper>
+        <UsersTable />
+      </StyledContentWrapper>
+    </>
   );
 }
 
