@@ -1,7 +1,8 @@
 import React from 'react';
-import MuiIconButton from '@mui/material/IconButton';
-import EditIcon from '@mui/icons-material/Edit';
+
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import MuiIconButton from '@mui/material/IconButton';
 
 const iconComponent = {
   edit: <EditIcon />,

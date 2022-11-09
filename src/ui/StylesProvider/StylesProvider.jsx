@@ -1,6 +1,7 @@
 import React from 'react';
+
+import { createTheme, ThemeProvider } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
-import { ThemeProvider, createTheme } from '@mui/material';
 import GlobalStyles from '@mui/material/GlobalStyles';
 
 const theme = createTheme();

@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
-import { StyledTableWrapper } from './styled';
-import { users } from './mock';
+
 import { STATUS_TITLE } from 'src/constants/common';
-import { FILTERS, TABLE_COLUMNS } from 'components/UsersTable/constants';
 import TextField from 'src/ui/TextField/TextField';
-import Filters from 'ui/Filters/Filters';
+
 import CreateUserModal from 'components/CreateUserModal/CreateUserModal';
-import EditUserModal from 'components/EditUserModal/EditUserModal';
-import Table from 'ui/Table/Table';
-import IconButton from 'ui/IconButton/IconButton';
 import DeleteUserModal from 'components/DeleteUserModal/DeleteUserModal';
-import Flex from 'ui/Flex/Flex';
+import EditUserModal from 'components/EditUserModal/EditUserModal';
+import { FILTERS, TABLE_COLUMNS } from 'components/UsersTable/constants';
+
 import Button from 'ui/Button/Button';
+import Filters from 'ui/Filters/Filters';
+import Flex from 'ui/Flex/Flex';
+import IconButton from 'ui/IconButton/IconButton';
+import Table from 'ui/Table/Table';
+
+import { users } from './mock';
+import { StyledTableWrapper } from './styled';
 
 const UserTable = () => {
   const [searchValue, setSearchValue] = useState('');
