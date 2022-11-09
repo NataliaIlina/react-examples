@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import Modal from 'ui/Modal/Modal';
+
 import UserFormFields from 'components/UserFormFields/UserFormFields';
+
+import Modal from 'ui/Modal/Modal';
 
 const EditUserModal = ({ initialValues, isModalOpen, closeModal }) => {
   const [values, setValues] = useState(initialValues);

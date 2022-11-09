@@ -1,5 +1,6 @@
-import TextField from 'ui/TextField/TextField';
 import React from 'react';
+
+import TextField from 'ui/TextField/TextField';
 
 const UserFormFields = ({ values, setValues }) => {
   return (

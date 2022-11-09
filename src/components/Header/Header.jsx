@@ -1,5 +1,7 @@
 import React from 'react';
+
 import AppBar from '@mui/material/AppBar';
+
 import Typography from 'ui/Typography/Typography';
 
 const Header = () => (
