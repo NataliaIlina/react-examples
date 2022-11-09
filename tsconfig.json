@@ -10,7 +10,8 @@
     "baseUrl": "./src",
     "paths": {
       "components/*": ["components/*"],
-      "ui/*": ["ui/*"]
+      "ui/*": ["ui/*"],
+      "types/*": ["types/*"]
     }
   },
   "include": ["src"],
