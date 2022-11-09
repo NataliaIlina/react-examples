@@ -1,7 +1,9 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './components/App/App';
-import StylesProvider from './ui/StylesProvider/StylesProvider';
+
+import App from 'components/App/App';
+
+import StylesProvider from 'ui/StylesProvider/StylesProvider';
 
 const AppComponent = () => (
   <StylesProvider>
