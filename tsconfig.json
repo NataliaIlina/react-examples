@@ -7,10 +7,10 @@
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
-      "components": ["src/components"],
-      "ui": ["src/ui"]
+      "components/*": ["components/*"],
+      "ui/*": ["ui/*"]
     }
   },
   "include": ["src"],
