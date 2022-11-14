@@ -1,16 +1,12 @@
 import React from 'react';
 
-import MuiDialog, { DialogProps } from '@mui/material/Dialog';
+import MuiDialog from '@mui/material/Dialog';
 import MuiDialogActions from '@mui/material/DialogActions';
 import MuiDialogContent from '@mui/material/DialogContent';
 import MuiDialogTitle from '@mui/material/DialogTitle';
 
-import Button from 'src/ui/Button/Button';
-
-interface IProps extends DialogProps {
-  acceptButtonTitle?: string;
-  onAccept: () => void;
-}
+import Button from 'ui/Button/Button';
+import { IModalProps } from 'ui/Modal/types';
 
 const Modal = ({
   open,
@@ -19,7 +15,7 @@ const Modal = ({
   children,
   acceptButtonTitle = 'Сохранить',
   onAccept,
-}: IProps) => {
+}: IModalProps) => {
   return (
     <MuiDialog open={open} onClose={onClose}>
       <MuiDialogTitle>{title}</MuiDialogTitle>

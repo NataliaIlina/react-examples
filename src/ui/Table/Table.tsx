@@ -8,8 +8,9 @@ import MuiTableHead from '@mui/material/TableHead';
 import MuiTableRow from '@mui/material/TableRow';
 
 import Box from 'ui/Box/Box';
+import type { ITableProps } from 'ui/Table/types';
 
-const Table = ({ rows, columns }) => {
+const Table = ({ rows, columns }: ITableProps) => {
   return (
     <MuiTableContainer>
       {rows.length === 0 && (
