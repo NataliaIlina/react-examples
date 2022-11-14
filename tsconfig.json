@@ -12,7 +12,6 @@
       "src/*": ["src/*"],
       "components/*": ["src/components/*"],
       "ui/*": ["src/ui/*"],
-      "types/*": ["src/types/*"]
     }
   },
   "include": ["src"],

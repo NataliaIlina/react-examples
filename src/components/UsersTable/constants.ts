@@ -1,8 +1,14 @@
 import { STATUS_TITLE } from 'src/constants/common';
+import type { IUserStatus } from 'src/types';
 
 export const TABLE_COLUMNS = ['Имя', 'Фамилия', 'Статус', 'Почта', 'Дата регистрации', '', ''];
 
-export const FILTERS = [
+interface IFilterOption {
+  label: string;
+  value: IUserStatus | 'all';
+}
+
+export const FILTERS: IFilterOption[] = [
   {
     label: 'Все',
     value: 'all',

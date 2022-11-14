@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
 
+import { IUserFormValues } from 'src/types';
+
 import UserFormFields from 'components/UserFormFields/UserFormFields';
 
 import Modal from 'ui/Modal/Modal';
 
-const EditUserModal = ({ initialValues, isModalOpen, closeModal }) => {
+interface IProps {
+  initialValues: IUserFormValues;
+  isModalOpen: boolean;
+  closeModal: () => void;
+}
+
+const EditUserModal = ({ initialValues, isModalOpen, closeModal }: IProps) => {
   const [values, setValues] = useState(initialValues);
 
   const onFormSubmit = () => {

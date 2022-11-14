@@ -8,3 +8,9 @@ export interface IUser {
   email: string;
   registrationDate: string;
 }
+
+export interface IUserFormValues {
+  firstName: IUser['firstName'];
+  lastName: IUser['lastName'];
+  email: IUser['email'];
+}
