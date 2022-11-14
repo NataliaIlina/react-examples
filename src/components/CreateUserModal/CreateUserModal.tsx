@@ -4,7 +4,12 @@ import UserFormFields from 'components/UserFormFields/UserFormFields';
 
 import Modal from 'ui/Modal/Modal';
 
-const CreateUserModal = ({ isModalOpen, closeModal }) => {
+interface IProps {
+  isModalOpen: boolean;
+  closeModal: () => void;
+}
+
+const CreateUserModal = ({ isModalOpen, closeModal }: IProps) => {
   const [values, setValues] = useState({
     firstName: '',
     lastName: '',
@@ -17,7 +22,7 @@ const CreateUserModal = ({ isModalOpen, closeModal }) => {
 
   return (
     <Modal
-      isOpen={isModalOpen}
+      open={isModalOpen}
       onClose={closeModal}
       title="Добавление пользователя"
       onAccept={onFormSubmit}
