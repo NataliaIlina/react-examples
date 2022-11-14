@@ -1,8 +1,15 @@
 import React from 'react';
 
+import type { IUserFormValues } from 'src/types';
+
 import TextField from 'ui/TextField/TextField';
 
-const UserFormFields = ({ values, setValues }) => {
+interface IProps {
+  values: IUserFormValues;
+  setValues: (values: IUserFormValues) => void;
+}
+
+const UserFormFields = ({ values, setValues }: IProps) => {
   return (
     <>
       <TextField

@@ -60,7 +60,6 @@ module.exports = {
       src: path.resolve(__dirname, `src`),
       components: path.resolve(__dirname, `src/components`),
       ui: path.resolve(__dirname, `src/ui`),
-      types: path.resolve(__dirname, `src/types`),
     },
     extensions: [`.js`, `.jsx`, `.ts`, `.tsx`],
   },

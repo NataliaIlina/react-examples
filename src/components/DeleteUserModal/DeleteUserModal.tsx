@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IUser } from 'types/index';
+import type { IUser } from 'src/types';
 
 import Modal from 'ui/Modal/Modal';
 import Typography from 'ui/Typography/Typography';
