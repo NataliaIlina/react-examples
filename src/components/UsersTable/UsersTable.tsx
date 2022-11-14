@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
+import { IUser, IUserStatus } from 'types/index';
+
 import { STATUS_TITLE } from 'src/constants/common';
-import TextField from 'src/ui/TextField/TextField';
 
 import CreateUserModal from 'components/CreateUserModal/CreateUserModal';
 import DeleteUserModal from 'components/DeleteUserModal/DeleteUserModal';
@@ -13,6 +14,7 @@ import Filters from 'ui/Filters/Filters';
 import Flex from 'ui/Flex/Flex';
 import IconButton from 'ui/IconButton/IconButton';
 import Table from 'ui/Table/Table';
+import TextField from 'ui/TextField/TextField';
 
 import { users } from './mock';
 import { StyledTableWrapper } from './styled';
@@ -27,7 +29,7 @@ const UserTable = () => {
     setCurrentModal('create');
   };
 
-  const openEditModal = (user) => {
+  const openEditModal = (user: IUser) => {
     setCurrentUser({
       firstName: user.firstName,
       lastName: user.lastName,
@@ -36,7 +38,7 @@ const UserTable = () => {
     setCurrentModal('edit');
   };
 
-  const openDeleteModal = (user) => {
+  const openDeleteModal = (user: IUser) => {
     setCurrentUser(user);
     setCurrentModal('delete');
   };
@@ -46,7 +48,7 @@ const UserTable = () => {
     setCurrentModal(null);
   };
 
-  const onFilterChange = (status) => {
+  const onFilterChange = (status: IUserStatus) => {
     setCurrentStatus(status);
   };
 
@@ -99,7 +101,7 @@ const UserTable = () => {
     <>
       <TextField
         value={searchValue}
-        onChange={(e) => setSearchValue(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchValue(e.target.value)}
         id="search"
         label="Поиск по имени"
         fullWidth={false}

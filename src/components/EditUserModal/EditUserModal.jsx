@@ -13,7 +13,7 @@ const EditUserModal = ({ initialValues, isModalOpen, closeModal }) => {
 
   return (
     <Modal
-      isOpen={isModalOpen}
+      open={isModalOpen}
       onClose={closeModal}
       title="Добавление пользователя"
       onAccept={onFormSubmit}

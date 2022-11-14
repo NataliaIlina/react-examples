@@ -1,15 +1,27 @@
 import React from 'react';
 
-import MuiDialog from '@mui/material/Dialog';
+import MuiDialog, { DialogProps } from '@mui/material/Dialog';
 import MuiDialogActions from '@mui/material/DialogActions';
 import MuiDialogContent from '@mui/material/DialogContent';
 import MuiDialogTitle from '@mui/material/DialogTitle';
 
 import Button from 'src/ui/Button/Button';
 
-const Modal = ({ isOpen, onClose, title, children, acceptButtonTitle = 'Сохранить', onAccept }) => {
+interface IProps extends DialogProps {
+  acceptButtonTitle?: string;
+  onAccept: () => void;
+}
+
+const Modal = ({
+  open,
+  onClose,
+  title,
+  children,
+  acceptButtonTitle = 'Сохранить',
+  onAccept,
+}: IProps) => {
   return (
-    <MuiDialog open={isOpen} onClose={onClose}>
+    <MuiDialog open={open} onClose={onClose}>
       <MuiDialogTitle>{title}</MuiDialogTitle>
 
       <MuiDialogContent>{children}</MuiDialogContent>

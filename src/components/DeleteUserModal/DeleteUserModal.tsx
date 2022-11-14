@@ -1,16 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
+
+import { IUser } from 'types/index';
 
 import Modal from 'ui/Modal/Modal';
 import Typography from 'ui/Typography/Typography';
 
-const DeleteUserModal = ({ user, isModalOpen, closeModal }) => {
+interface IProps {
+  isModalOpen: boolean;
+  closeModal: () => void;
+  user: IUser;
+}
+
+const DeleteUserModal = ({ user, isModalOpen, closeModal }: IProps) => {
   const onFormSubmit = () => {
     console.log(user.id);
   };
 
   return (
     <Modal
-      isOpen={isModalOpen}
+      open={isModalOpen}
       onClose={closeModal}
       title="Удаление пользователя"
       onAccept={onFormSubmit}
