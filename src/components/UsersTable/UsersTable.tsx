@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-
-import { IUser, IUserStatus } from 'types/index';
+import React, { SyntheticEvent, useState } from 'react';
 
 import { STATUS_TITLE } from 'src/constants/common';
+import type { IUser, IUserStatus } from 'src/types';
 
 import CreateUserModal from 'components/CreateUserModal/CreateUserModal';
 import DeleteUserModal from 'components/DeleteUserModal/DeleteUserModal';
@@ -48,7 +47,7 @@ const UserTable = () => {
     setCurrentModal(null);
   };
 
-  const onFilterChange = (status: IUserStatus) => {
+  const onFilterChange = (e: SyntheticEvent, status: IUserStatus) => {
     setCurrentStatus(status);
   };
 

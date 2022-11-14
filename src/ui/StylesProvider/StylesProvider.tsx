@@ -6,7 +6,11 @@ import GlobalStyles from '@mui/material/GlobalStyles';
 
 const theme = createTheme();
 
-const StylesProvider = ({ children }) => (
+interface IProps {
+  children: React.ReactNode;
+}
+
+const StylesProvider = ({ children }: IProps) => (
   <ThemeProvider theme={theme}>
     <CssBaseline />
     <GlobalStyles
