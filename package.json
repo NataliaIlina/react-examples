@@ -6,7 +6,7 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --mode=production",
     "start:develop": "cross-env NODE_ENV=development webpack-dev-server",
-    "lint:js": "eslint src/**/*.js src/**/*.jsx",
+    "lint:js": "eslint src/**/*.ts src/**/*.tsx",
     "lint:fix": "npm run lint:js -- --fix",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
