@@ -61,7 +61,7 @@ module.exports = {
       components: path.resolve(__dirname, `src/components`),
       ui: path.resolve(__dirname, `src/ui`),
     },
-    extensions: [`.ts`, `.tsx`],
+    extensions: [`.js`, `.jsx`, `.ts`, `.tsx`],
   },
   optimization: {
     splitChunks: { name: 'all' },
