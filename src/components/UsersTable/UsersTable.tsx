@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useState } from 'react';
+import React, { SyntheticEvent, useCallback, useState } from 'react';
 
 import { STATUS_TITLE } from 'src/constants/common';
 import type { IUser, IUserStatus } from 'src/types';
@@ -24,32 +24,32 @@ const UserTable = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const [currentModal, setCurrentModal] = useState(null);
 
-  const openCreateModal = () => {
+  const openCreateModal = useCallback(() => {
     setCurrentModal('create');
-  };
+  }, []);
 
-  const openEditModal = (user: IUser) => {
+  const openEditModal = useCallback((user: IUser) => {
     setCurrentUser({
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
     });
     setCurrentModal('edit');
-  };
+  }, []);
 
-  const openDeleteModal = (user: IUser) => {
+  const openDeleteModal = useCallback((user: IUser) => {
     setCurrentUser(user);
     setCurrentModal('delete');
-  };
+  }, []);
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setCurrentUser(null);
     setCurrentModal(null);
-  };
+  }, []);
 
-  const onFilterChange = (e: SyntheticEvent, status: IUserStatus) => {
+  const onFilterChange = useCallback((e: SyntheticEvent, status: IUserStatus) => {
     setCurrentStatus(status);
-  };
+  }, []);
 
   const data = users
     .filter((user) => {
