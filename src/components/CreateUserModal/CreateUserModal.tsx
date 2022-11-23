@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import UserFormFields from 'components/UserFormFields/UserFormFields';
 
@@ -16,9 +16,9 @@ const CreateUserModal = ({ isModalOpen, closeModal }: IProps) => {
     email: '',
   });
 
-  const onFormSubmit = () => {
+  const onFormSubmit = useCallback(() => {
     console.log(values);
-  };
+  }, [values]);
 
   return (
     <Modal

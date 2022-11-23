@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { IUserFormValues } from 'src/types';
 
@@ -15,9 +15,9 @@ interface IProps {
 const EditUserModal = ({ initialValues, isModalOpen, closeModal }: IProps) => {
   const [values, setValues] = useState(initialValues);
 
-  const onFormSubmit = () => {
+  const onFormSubmit = useCallback(() => {
     console.log(values);
-  };
+  }, [values]);
 
   return (
     <Modal

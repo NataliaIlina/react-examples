@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import type { IUser } from 'src/types';
 
@@ -12,9 +12,9 @@ interface IProps {
 }
 
 const DeleteUserModal = ({ user, isModalOpen, closeModal }: IProps) => {
-  const onFormSubmit = () => {
+  const onFormSubmit = useCallback(() => {
     console.log(user.id);
-  };
+  }, [user.id]);
 
   return (
     <Modal
