@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useCallback, useState } from 'react';
+import React, { SyntheticEvent, useCallback, useMemo, useState } from 'react';
 
 import { STATUS_TITLE } from 'src/constants/common';
 import type { IUser, IUserStatus } from 'src/types';
@@ -51,50 +51,58 @@ const UserTable = () => {
     setCurrentStatus(status);
   }, []);
 
-  const data = users
-    .filter((user) => {
-      const userName = `${user.firstName}${user.lastName}`.toLowerCase();
-      if (userName.includes(searchValue.toLowerCase())) {
-        return true;
-      }
+  const data = useMemo(
+    () =>
+      users
+        .filter((user) => {
+          const userName = `${user.firstName}${user.lastName}`.toLowerCase();
+          if (userName.includes(searchValue.toLowerCase())) {
+            return true;
+          }
 
-      return false;
-    })
-    .filter((user) => {
-      if (currentStatus === 'all') {
-        return true;
-      }
+          return false;
+        })
+        .filter((user) => {
+          if (currentStatus === 'all') {
+            return true;
+          }
 
-      return user.status === currentStatus;
-    });
+          return user.status === currentStatus;
+        }),
+    [currentStatus, searchValue]
+  );
 
-  const rows = data.map((user) => [
-    { content: user.firstName },
-    { content: user.lastName },
-    { content: STATUS_TITLE[user.status] },
-    { content: user.email },
-    { content: user.registrationDate },
-    {
-      content: (
-        <IconButton
-          onClick={() => {
-            openEditModal(user);
-          }}
-          name="edit"
-        />
-      ),
-    },
-    {
-      content: (
-        <IconButton
-          onClick={() => {
-            openDeleteModal(user);
-          }}
-          name="delete"
-        />
-      ),
-    },
-  ]);
+  const rows = useMemo(
+    () =>
+      data.map((user) => [
+        { content: user.firstName },
+        { content: user.lastName },
+        { content: STATUS_TITLE[user.status] },
+        { content: user.email },
+        { content: user.registrationDate },
+        {
+          content: (
+            <IconButton
+              onClick={() => {
+                openEditModal(user);
+              }}
+              name="edit"
+            />
+          ),
+        },
+        {
+          content: (
+            <IconButton
+              onClick={() => {
+                openDeleteModal(user);
+              }}
+              name="delete"
+            />
+          ),
+        },
+      ]),
+    [data, openDeleteModal, openEditModal]
+  );
 
   return (
     <>
