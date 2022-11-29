@@ -1,4 +1,5 @@
 import React, { SyntheticEvent, useCallback, useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { STATUS_TITLE } from 'src/constants/common';
 import type { IUser, IUserStatus } from 'src/types';
@@ -19,6 +20,8 @@ import { users } from './mock';
 import { StyledTableWrapper } from './styled';
 
 const UserTable = () => {
+  const navigate = useNavigate();
+
   const [searchValue, setSearchValue] = useState('');
   const [currentStatus, setCurrentStatus] = useState('all');
   const [currentUser, setCurrentUser] = useState(null);
@@ -72,36 +75,46 @@ const UserTable = () => {
     [currentStatus, searchValue]
   );
 
+  const onRowClick = useCallback(
+    (userId: number) => {
+      navigate(`${userId}`);
+    },
+    [navigate]
+  );
+
   const rows = useMemo(
     () =>
-      data.map((user) => [
-        { content: user.firstName },
-        { content: user.lastName },
-        { content: STATUS_TITLE[user.status] },
-        { content: user.email },
-        { content: user.registrationDate },
-        {
-          content: (
-            <IconButton
-              onClick={() => {
-                openEditModal(user);
-              }}
-              name="edit"
-            />
-          ),
-        },
-        {
-          content: (
-            <IconButton
-              onClick={() => {
-                openDeleteModal(user);
-              }}
-              name="delete"
-            />
-          ),
-        },
-      ]),
-    [data, openDeleteModal, openEditModal]
+      data.map((user) => ({
+        onClick: () => onRowClick(user.id),
+        cells: [
+          { content: user.firstName },
+          { content: user.lastName },
+          { content: STATUS_TITLE[user.status] },
+          { content: user.email },
+          { content: user.registrationDate },
+          {
+            content: (
+              <IconButton
+                onClick={() => {
+                  openEditModal(user);
+                }}
+                name="edit"
+              />
+            ),
+          },
+          {
+            content: (
+              <IconButton
+                onClick={() => {
+                  openDeleteModal(user);
+                }}
+                name="delete"
+              />
+            ),
+          },
+        ],
+      })),
+    [data, onRowClick, openDeleteModal, openEditModal]
   );
 
   return (
