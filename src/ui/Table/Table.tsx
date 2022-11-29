@@ -29,8 +29,8 @@ const Table = ({ rows, columns }: ITableProps) => {
           </MuiTableHead>
           <MuiTableBody>
             {rows.map((row, index) => (
-              <MuiTableRow key={index}>
-                {row.map((item, index) => (
+              <MuiTableRow hover={Boolean(row.onClick)} onClick={row.onClick} key={index}>
+                {row.cells.map((item, index) => (
                   <MuiTableCell key={index}>{item.content}</MuiTableCell>
                 ))}
               </MuiTableRow>
