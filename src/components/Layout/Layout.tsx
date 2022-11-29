@@ -1,9 +1,8 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { StyledContentWrapper } from 'pages/Layout/styled';
-
 import Header from 'components/Header/Header';
+import { StyledContentWrapper } from 'components/Layout/styled';
 
 function Layout() {
   return (

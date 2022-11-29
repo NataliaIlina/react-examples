@@ -3,15 +3,15 @@ import { createRoot } from 'react-dom/client';
 import {
   createBrowserRouter,
   createRoutesFromElements,
-  Link,
   Route,
   RouterProvider,
 } from 'react-router-dom';
 
 import CurrentUser from 'pages/CurrentUser/CurrentUser';
-import Layout from 'pages/Layout/Layout';
 import Main from 'pages/Main/Main';
 import Users from 'pages/Users/Users';
+
+import Layout from 'components/Layout/Layout';
 
 import StylesProvider from 'ui/StylesProvider/StylesProvider';
 
