@@ -6,7 +6,6 @@ import Typography from 'ui/Typography/Typography';
 const CurrentUser = () => {
   const { userId } = useParams();
 
-  console.log(userId);
   return (
     <div>
       <Typography>{`Текущий пользователь c id ${userId}`}</Typography>

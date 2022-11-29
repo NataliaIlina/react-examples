@@ -1,10 +1,9 @@
 import styled from '@emotion/styled';
 
-export const StyledContentWrapper = styled.div`
+export const StyledContentWrapper = styled.main`
   max-width: 1200px;
   min-width: 540px;
   padding: 24px;
-  padding-top: 80px;
   margin: 0 auto;
-  min-height: 100vh;
+  min-height: calc(100vh - 100px);
 `;
