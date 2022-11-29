@@ -1,19 +1,28 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 
 import logo from 'src/img/logo.png';
 
-import Typography from 'ui/Typography/Typography';
-
 const Header = () => (
-  <AppBar>
+  <AppBar position="static">
     <Toolbar>
       <img src={logo} width={50} height={50} alt="logo" />
-      <Typography variant="h6" textAlign="center" p="16px">
-        Список пользователей
-      </Typography>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Главная</Link>
+          </li>
+          <li>
+            <Link to="/users">Пользователи</Link>
+          </li>
+          <li>
+            <Link to="/users/1">Пользователь</Link>
+          </li>
+        </ul>
+      </nav>
     </Toolbar>
   </AppBar>
 );
