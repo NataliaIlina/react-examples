@@ -2,6 +2,7 @@ import React, { SyntheticEvent, useCallback, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { STATUS_TITLE } from 'src/constants/common';
+import { users } from 'src/mock';
 import type { IUser, IUserStatus } from 'src/types';
 
 import CreateUserModal from 'components/CreateUserModal/CreateUserModal';
@@ -16,7 +17,6 @@ import IconButton from 'ui/IconButton/IconButton';
 import Table from 'ui/Table/Table';
 import TextField from 'ui/TextField/TextField';
 
-import { users } from './mock';
 import { StyledTableWrapper } from './styled';
 
 const UserTable = () => {
@@ -77,7 +77,7 @@ const UserTable = () => {
 
   const onRowClick = useCallback(
     (userId: number) => {
-      navigate(`${userId}`);
+      navigate(String(userId));
     },
     [navigate]
   );
@@ -95,7 +95,8 @@ const UserTable = () => {
           {
             content: (
               <IconButton
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation();
                   openEditModal(user);
                 }}
                 name="edit"
@@ -105,7 +106,8 @@ const UserTable = () => {
           {
             content: (
               <IconButton
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation();
                   openDeleteModal(user);
                 }}
                 name="delete"

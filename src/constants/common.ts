@@ -1,5 +1,5 @@
 export const STATUS_TITLE = {
-  active: 'Активный',
+  active: 'Активен',
   blocked: 'Заблокирован',
   frozen: 'Заморожен',
 };
