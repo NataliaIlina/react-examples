@@ -1,15 +1,16 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-import { SelectChangeEvent, Stack } from '@mui/material';
-import Box from '@mui/material/Box';
+import { Stack } from '@mui/material';
 
-import { STATUS_OPTIONS } from 'src/constants/common';
+import { STATUS_OPTIONS, STATUS_TITLE } from 'src/constants/common';
 import { users } from 'src/mock';
 import { IUserStatus } from 'src/types';
 
 import EditableRow from 'ui/EditableRow/EditableRow';
 import Select from 'ui/Select/Select';
+import { ISelectChangeEvent } from 'ui/Select/types';
+import TextField from 'ui/TextField/TextField';
 import Typography from 'ui/Typography/Typography';
 
 const CurrentUser = () => {
@@ -19,11 +20,21 @@ const CurrentUser = () => {
     return users.find((item) => item.id === Number(userId));
   }, [userId]);
 
-  const [status, setStatus] = useState(user?.status);
+  const [userValues, setUserValues] = useState(user);
 
-  const onSelectChange = useCallback((e: SelectChangeEvent) => {
-    setStatus(e.target.value as IUserStatus);
-  }, []);
+  const onSelectChange = useCallback(
+    (e: ISelectChangeEvent) => {
+      setUserValues({ ...userValues, status: e.target.value as IUserStatus });
+    },
+    [userValues]
+  );
+
+  const onChange = useCallback(
+    (name: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      setUserValues({ ...userValues, [name]: e.target.value });
+    },
+    [userValues]
+  );
 
   return (
     <div>
@@ -34,19 +45,39 @@ const CurrentUser = () => {
       </Typography>
 
       <Stack gap="8px">
-        <EditableRow label="Фамилия" value={user.lastName} />
-        <EditableRow label="Имя" value={user.firstName} />
-        <EditableRow label="Почта" value={user.email} />
+        <EditableRow label="Фамилия" value={user.lastName}>
+          <TextField
+            size="small"
+            margin="none"
+            value={userValues.firstName}
+            onChange={onChange('firstName')}
+          />
+        </EditableRow>
+        <EditableRow label="Имя" value={user.firstName}>
+          <TextField
+            size="small"
+            margin="none"
+            value={userValues.lastName}
+            onChange={onChange('lastName')}
+          />
+        </EditableRow>
+        <EditableRow label="Почта" value={user.email}>
+          <TextField
+            size="small"
+            margin="none"
+            value={userValues.email}
+            onChange={onChange('email')}
+          />
+        </EditableRow>
 
-        <Box width="500px">
+        <EditableRow label="Статус" value={STATUS_TITLE[user.status]}>
           <Select
-            label="Статус"
             id="status"
             options={STATUS_OPTIONS}
-            value={status}
+            value={userValues.status}
             onChange={onSelectChange}
           />
-        </Box>
+        </EditableRow>
       </Stack>
     </div>
   );
