@@ -1,5 +1,7 @@
 import React, { useCallback } from 'react';
 
+import { useDispatch } from 'src/hooks/redux';
+import { deleteUser } from 'src/stores/users/slice';
 import type { IUser } from 'src/types';
 
 import Modal from 'ui/Modal/Modal';
@@ -12,9 +14,12 @@ interface IProps {
 }
 
 const DeleteUserModal = ({ user, isModalOpen, closeModal }: IProps) => {
+  const dispatch = useDispatch();
+
   const onFormSubmit = useCallback(() => {
-    console.log(user.id);
-  }, [user.id]);
+    dispatch(deleteUser({ userId: user.id }));
+    closeModal();
+  }, [closeModal, dispatch, user.id]);
 
   return (
     <Modal
@@ -22,9 +27,10 @@ const DeleteUserModal = ({ user, isModalOpen, closeModal }: IProps) => {
       onClose={closeModal}
       title="Удаление пользователя"
       onAccept={onFormSubmit}
+      acceptButtonTitle="удалить"
     >
       <Typography>
-        {`Вы действительно хотети удалить пользователя ${user.firstName} ${user.lastName}?`}
+        {`Вы действительно хотите удалить пользователя ${user.firstName} ${user.lastName}?`}
       </Typography>
     </Modal>
   );
