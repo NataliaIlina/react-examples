@@ -1,5 +1,8 @@
 import React, { useCallback, useState } from 'react';
 
+import { useDispatch } from 'src/hooks/redux';
+import { createUser } from 'src/stores/users/slice';
+
 import UserFormFields from 'components/UserFormFields/UserFormFields';
 
 import Modal from 'ui/Modal/Modal';
@@ -9,21 +12,43 @@ interface IProps {
   closeModal: () => void;
 }
 
+const initialValues = {
+  firstName: '',
+  lastName: '',
+  email: '',
+};
+
 const CreateUserModal = ({ isModalOpen, closeModal }: IProps) => {
-  const [values, setValues] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-  });
+  const dispatch = useDispatch();
+
+  const [values, setValues] = useState(initialValues);
+
+  const resetForm = useCallback(() => {
+    setValues(initialValues);
+  }, []);
 
   const onFormSubmit = useCallback(() => {
-    console.log(values);
-  }, [values]);
+    dispatch(
+      createUser({
+        ...values,
+        status: 'active',
+        registrationDate: new Date().toLocaleDateString(),
+        id: Math.random(),
+      })
+    );
+    resetForm();
+    closeModal();
+  }, [closeModal, dispatch, resetForm, values]);
+
+  const onClose = useCallback(() => {
+    resetForm();
+    closeModal();
+  }, [closeModal, resetForm]);
 
   return (
     <Modal
       open={isModalOpen}
-      onClose={closeModal}
+      onClose={onClose}
       title="Добавление пользователя"
       onAccept={onFormSubmit}
     >

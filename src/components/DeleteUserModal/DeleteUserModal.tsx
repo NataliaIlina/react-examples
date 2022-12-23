@@ -17,7 +17,7 @@ const DeleteUserModal = ({ user, isModalOpen, closeModal }: IProps) => {
   const dispatch = useDispatch();
 
   const onFormSubmit = useCallback(() => {
-    dispatch(deleteUser({ userId: user.id }));
+    dispatch(deleteUser(user.id));
     closeModal();
   }, [closeModal, dispatch, user.id]);
 
