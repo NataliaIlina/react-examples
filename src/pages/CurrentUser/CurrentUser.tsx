@@ -1,8 +1,6 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-import { Stack } from '@mui/material';
-
 import { STATUS_OPTIONS, STATUS_TITLE } from 'src/constants/common';
 import { users } from 'src/mock';
 import type { IUser, IUserStatus } from 'src/types';
@@ -10,6 +8,7 @@ import type { IUser, IUserStatus } from 'src/types';
 import EditableRow from 'ui/EditableRow/EditableRow';
 import Select from 'ui/Select/Select';
 import type { ISelectChangeEvent } from 'ui/Select/types';
+import Stack from 'ui/Stack/Stack';
 import TextField from 'ui/TextField/TextField';
 import Typography from 'ui/Typography/Typography';
 
