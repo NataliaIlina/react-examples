@@ -12,7 +12,7 @@ import CurrentUser from 'pages/CurrentUser/CurrentUser';
 import Main from 'pages/Main/Main';
 import Users from 'pages/Users/Users';
 
-import { store } from 'src/store/store';
+import { rootStore } from 'src/stores/rootStore';
 
 import Layout from 'components/Layout/Layout';
 
@@ -32,7 +32,7 @@ const router = createBrowserRouter(
 );
 
 const AppComponent = () => (
-  <Provider store={store}>
+  <Provider store={rootStore}>
     <StylesProvider>
       <RouterProvider router={router} />
     </StylesProvider>

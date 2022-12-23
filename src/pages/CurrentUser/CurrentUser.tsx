@@ -1,8 +1,9 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import { STATUS_OPTIONS, STATUS_TITLE } from 'src/constants/common';
-import { users } from 'src/mock';
+import { useSelector } from 'src/hooks/redux';
+import { getUserById } from 'src/stores/users/getters';
 import type { IUser, IUserStatus } from 'src/types';
 
 import EditableRow from 'ui/EditableRow/EditableRow';
@@ -15,9 +16,7 @@ import Typography from 'ui/Typography/Typography';
 const CurrentUser = () => {
   const { userId } = useParams();
 
-  const user = useMemo(() => {
-    return users.find((item) => item.id === Number(userId));
-  }, [userId]);
+  const user = useSelector((state) => getUserById(state, Number(userId)));
 
   const [userValues, setUserValues] = useState(user);
 

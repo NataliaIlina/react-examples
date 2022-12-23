@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { users } from 'src/mock';
 import type { IUser } from 'src/types';
 
 interface IUsersState {
@@ -7,9 +8,9 @@ interface IUsersState {
 }
 
 const initialState: IUsersState = {
-  data: [],
+  data: users,
 };
 
-const users = createSlice({ name: 'users', initialState, reducers: {} });
+const usersSlice = createSlice({ name: 'users', initialState, reducers: {} });
 
-export default users.reducer;
+export default usersSlice.reducer;

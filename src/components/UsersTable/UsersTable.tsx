@@ -2,7 +2,8 @@ import React, { SyntheticEvent, useCallback, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { STATUS_TITLE } from 'src/constants/common';
-import { users } from 'src/mock';
+import { useSelector } from 'src/hooks/redux';
+import { getUsers } from 'src/stores/users/getters';
 import type { IUser, IUserStatus } from 'src/types';
 
 import CreateUserModal from 'components/CreateUserModal/CreateUserModal';
@@ -21,6 +22,7 @@ import { StyledTableWrapper } from './styled';
 
 const UserTable = () => {
   const navigate = useNavigate();
+  const users = useSelector(getUsers);
 
   const [searchValue, setSearchValue] = useState('');
   const [currentStatus, setCurrentStatus] = useState('all');
@@ -72,7 +74,7 @@ const UserTable = () => {
 
           return user.status === currentStatus;
         }),
-    [currentStatus, searchValue]
+    [currentStatus, searchValue, users]
   );
 
   const onRowClick = useCallback(
