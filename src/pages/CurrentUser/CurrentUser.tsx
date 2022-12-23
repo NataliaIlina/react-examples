@@ -5,11 +5,11 @@ import { Stack } from '@mui/material';
 
 import { STATUS_OPTIONS, STATUS_TITLE } from 'src/constants/common';
 import { users } from 'src/mock';
-import { IUserStatus } from 'src/types';
+import type { IUser, IUserStatus } from 'src/types';
 
 import EditableRow from 'ui/EditableRow/EditableRow';
 import Select from 'ui/Select/Select';
-import { ISelectChangeEvent } from 'ui/Select/types';
+import type { ISelectChangeEvent } from 'ui/Select/types';
 import TextField from 'ui/TextField/TextField';
 import Typography from 'ui/Typography/Typography';
 
@@ -30,10 +30,21 @@ const CurrentUser = () => {
   );
 
   const onChange = useCallback(
-    (name: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, name: keyof IUser) => {
       setUserValues({ ...userValues, [name]: e.target.value });
     },
     [userValues]
+  );
+
+  const onSave = useCallback(() => {
+    console.log(userValues, 'new values');
+  }, [userValues]);
+
+  const onCancel = useCallback(
+    (name: keyof IUser) => {
+      setUserValues({ ...userValues, [name]: user[name] });
+    },
+    [user, userValues]
   );
 
   return (
@@ -45,32 +56,52 @@ const CurrentUser = () => {
       </Typography>
 
       <Stack gap="8px">
-        <EditableRow label="Фамилия" value={user.lastName}>
-          <TextField
-            size="small"
-            margin="none"
-            value={userValues.firstName}
-            onChange={onChange('firstName')}
-          />
-        </EditableRow>
-        <EditableRow label="Имя" value={user.firstName}>
+        <EditableRow
+          label="Фамилия"
+          value={user.lastName}
+          onSave={onSave}
+          onCancel={() => onCancel('lastName')}
+        >
           <TextField
             size="small"
             margin="none"
             value={userValues.lastName}
-            onChange={onChange('lastName')}
+            onChange={(e) => onChange(e, 'lastName')}
           />
         </EditableRow>
-        <EditableRow label="Почта" value={user.email}>
+        <EditableRow
+          label="Имя"
+          value={user.firstName}
+          onSave={onSave}
+          onCancel={() => onCancel('firstName')}
+        >
+          <TextField
+            size="small"
+            margin="none"
+            value={userValues.firstName}
+            onChange={(e) => onChange(e, 'firstName')}
+          />
+        </EditableRow>
+        <EditableRow
+          label="Почта"
+          value={user.email}
+          onSave={onSave}
+          onCancel={() => onCancel('email')}
+        >
           <TextField
             size="small"
             margin="none"
             value={userValues.email}
-            onChange={onChange('email')}
+            onChange={(e) => onChange(e, 'email')}
           />
         </EditableRow>
 
-        <EditableRow label="Статус" value={STATUS_TITLE[user.status]}>
+        <EditableRow
+          label="Статус"
+          value={STATUS_TITLE[user.status]}
+          onSave={onSave}
+          onCancel={() => onCancel('status')}
+        >
           <Select
             id="status"
             options={STATUS_OPTIONS}

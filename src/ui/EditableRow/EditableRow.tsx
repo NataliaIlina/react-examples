@@ -12,9 +12,11 @@ interface IProps {
   label: string;
   value: string;
   children: ReactNode;
+  onSave: () => void;
+  onCancel?: () => void;
 }
 
-const EditableRow = ({ label, value, children }: IProps) => {
+const EditableRow = ({ label, value, children, onSave, onCancel }: IProps) => {
   const [isActive, setActive] = useState(false);
 
   const onEditIconClick = useCallback(() => {
@@ -22,12 +24,14 @@ const EditableRow = ({ label, value, children }: IProps) => {
   }, []);
 
   const onCancelIconClick = useCallback(() => {
+    onCancel?.();
     setActive(false);
-  }, []);
+  }, [onCancel]);
 
   const onSaveIconClick = useCallback(() => {
+    onSave();
     setActive(false);
-  }, []);
+  }, [onSave]);
 
   return (
     <Flex alignItems="center" gap="8px">
