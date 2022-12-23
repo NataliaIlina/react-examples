@@ -1,5 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import { Provider } from 'react-redux';
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -10,6 +11,8 @@ import {
 import CurrentUser from 'pages/CurrentUser/CurrentUser';
 import Main from 'pages/Main/Main';
 import Users from 'pages/Users/Users';
+
+import { store } from 'src/store/store';
 
 import Layout from 'components/Layout/Layout';
 
@@ -29,9 +32,11 @@ const router = createBrowserRouter(
 );
 
 const AppComponent = () => (
-  <StylesProvider>
-    <RouterProvider router={router} />
-  </StylesProvider>
+  <Provider store={store}>
+    <StylesProvider>
+      <RouterProvider router={router} />
+    </StylesProvider>
+  </Provider>
 );
 
 const container = document.querySelector('#root');
