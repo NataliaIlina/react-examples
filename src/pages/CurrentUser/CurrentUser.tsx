@@ -2,8 +2,9 @@ import React, { useCallback, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import { STATUS_OPTIONS, STATUS_TITLE } from 'src/constants/common';
-import { useSelector } from 'src/hooks/redux';
+import { useDispatch, useSelector } from 'src/hooks/redux';
 import { getUserById } from 'src/stores/users/getters';
+import { updateUser } from 'src/stores/users/slice';
 import type { IUser, IUserStatus } from 'src/types';
 
 import EditableRow from 'ui/EditableRow/EditableRow';
@@ -14,6 +15,7 @@ import TextField from 'ui/TextField/TextField';
 import Typography from 'ui/Typography/Typography';
 
 const CurrentUser = () => {
+  const dispatch = useDispatch();
   const { userId } = useParams();
 
   const user = useSelector((state) => getUserById(state, Number(userId)));
@@ -35,8 +37,8 @@ const CurrentUser = () => {
   );
 
   const onSave = useCallback(() => {
-    console.log(userValues, 'new values');
-  }, [userValues]);
+    dispatch(updateUser(userValues));
+  }, [dispatch, userValues]);
 
   const onCancel = useCallback(
     (name: keyof IUser) => {
