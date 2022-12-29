@@ -1,23 +1,27 @@
 import React, { useCallback, useState } from 'react';
 
-import { IUserFormValues } from 'src/types';
+import { useDispatch } from 'src/hooks/redux';
+import { updateUser } from 'src/stores/users/slice';
+import { IUser } from 'src/types';
 
 import UserFormFields from 'components/UserFormFields/UserFormFields';
 
 import Modal from 'ui/Modal/Modal';
 
 interface IProps {
-  initialValues: IUserFormValues;
+  initialValues: IUser;
   isModalOpen: boolean;
   closeModal: () => void;
 }
 
 const EditUserModal = ({ initialValues, isModalOpen, closeModal }: IProps) => {
+  const dispatch = useDispatch();
   const [values, setValues] = useState(initialValues);
 
   const onFormSubmit = useCallback(() => {
-    console.log(values);
-  }, [values]);
+    dispatch(updateUser(values));
+    closeModal();
+  }, [closeModal, dispatch, values]);
 
   return (
     <Modal
