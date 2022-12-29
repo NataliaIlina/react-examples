@@ -1,7 +1,8 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 
 import { useDispatch } from 'src/hooks/redux';
 import { createUser } from 'src/stores/users/slice';
+import { IUser } from 'src/types';
 
 import UserFormFields from 'components/UserFormFields/UserFormFields';
 
@@ -12,30 +13,28 @@ interface IProps {
   closeModal: () => void;
 }
 
-const initialValues = {
-  firstName: '',
-  lastName: '',
-  email: '',
-};
-
 const CreateUserModal = ({ isModalOpen, closeModal }: IProps) => {
   const dispatch = useDispatch();
+
+  const initialValues = useMemo<IUser>(() => {
+    return {
+      firstName: '',
+      lastName: '',
+      email: '',
+      status: 'active',
+      registrationDate: new Date().toLocaleDateString(),
+      id: Math.random(),
+    };
+  }, []);
 
   const [values, setValues] = useState(initialValues);
 
   const resetForm = useCallback(() => {
     setValues(initialValues);
-  }, []);
+  }, [initialValues]);
 
   const onFormSubmit = useCallback(() => {
-    dispatch(
-      createUser({
-        ...values,
-        status: 'active',
-        registrationDate: new Date().toLocaleDateString(),
-        id: Math.random(),
-      })
-    );
+    dispatch(createUser(values));
     resetForm();
     closeModal();
   }, [closeModal, dispatch, resetForm, values]);

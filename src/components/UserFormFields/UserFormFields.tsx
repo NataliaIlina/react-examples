@@ -1,12 +1,12 @@
 import React from 'react';
 
-import type { IUserFormValues } from 'src/types';
+import type { IUser } from 'src/types';
 
 import TextField from 'ui/TextField/TextField';
 
 interface IProps {
-  values: IUserFormValues;
-  setValues: (values: IUserFormValues) => void;
+  values: IUser;
+  setValues: (values: IUser) => void;
 }
 
 const UserFormFields = ({ values, setValues }: IProps) => {

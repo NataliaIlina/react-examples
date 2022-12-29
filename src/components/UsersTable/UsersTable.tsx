@@ -20,25 +20,23 @@ import TextField from 'ui/TextField/TextField';
 
 import { StyledTableWrapper } from './styled';
 
+type IModalType = 'delete' | 'edit' | 'create';
+
 const UserTable = () => {
   const navigate = useNavigate();
   const users = useSelector(getUsers);
 
   const [searchValue, setSearchValue] = useState('');
   const [currentStatus, setCurrentStatus] = useState('all');
-  const [currentUser, setCurrentUser] = useState(null);
-  const [currentModal, setCurrentModal] = useState(null);
+  const [currentUser, setCurrentUser] = useState<IUser>(null);
+  const [currentModal, setCurrentModal] = useState<IModalType>(null);
 
   const openCreateModal = useCallback(() => {
     setCurrentModal('create');
   }, []);
 
   const openEditModal = useCallback((user: IUser) => {
-    setCurrentUser({
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-    });
+    setCurrentUser(user);
     setCurrentModal('edit');
   }, []);
 
