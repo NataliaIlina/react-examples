@@ -67,6 +67,7 @@ const CurrentUser = () => {
             margin="none"
             value={userValues.lastName}
             onChange={(e) => onChange(e, 'lastName')}
+            autoFocus
           />
         </EditableRow>
         <EditableRow
@@ -80,6 +81,7 @@ const CurrentUser = () => {
             margin="none"
             value={userValues.firstName}
             onChange={(e) => onChange(e, 'firstName')}
+            autoFocus
           />
         </EditableRow>
         <EditableRow
@@ -93,6 +95,7 @@ const CurrentUser = () => {
             margin="none"
             value={userValues.email}
             onChange={(e) => onChange(e, 'email')}
+            autoFocus
           />
         </EditableRow>
 
