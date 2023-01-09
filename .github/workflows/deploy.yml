@@ -1,4 +1,4 @@
-name: Build and deploy to gh-pages
+name: React app deployement
 
 on:
   push:
@@ -14,5 +14,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Deploy react to gh-pages
-        uses: alainQtec/deploy-react-to-ghpages@1.0.0-beta.2
+      - name: Deploy react app to github pages
+        uses: tanwanimohit/deploy-react-to-ghpages@v1.0.1
