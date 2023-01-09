@@ -1,7 +1,8 @@
 {
   "name": "my-project",
   "version": "1.1.0",
-  "private": true,
+  "homepage": "https://nataliailina.github.io/react-examples/",
+  "private": false,
   "description": "My project",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --mode=production",
@@ -9,7 +10,7 @@
     "lint:js": "eslint src/**/*.ts src/**/*.tsx",
     "lint:fix": "npm run lint:js -- --fix",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@emotion/react": "11.10.5",
@@ -45,7 +46,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-unused-imports": "^2.0.0",
     "file-loader": "6.2.0",
-    "gh-pages": "4.0.0",
+    "gh-pages": "^4.0.0",
     "html-webpack-plugin": "5.5.0",
     "prettier": "2.7.1",
     "terser-webpack-plugin": "5.3.6",
